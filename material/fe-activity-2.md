@@ -8,9 +8,10 @@ that depends on different factors.
 
 > Upon completion, follow the steps in this [guideline](push-to-github.md) to push your code to GitHub. 
 
+
 ### Learning goals
 
-By the end of this practice, you should be able to
+By the end of this part, you should be able to
 
 - Explain the purpose of the two arguments in a `useEffect` function
 - Explain when a `useEffect` hook runs
@@ -22,20 +23,22 @@ By the end of this practice, you should be able to
 Open your terminal and run:
 
 ```sh
-npx create-vite@latest w4-fe-activity-part1 --template react
-cd w4-fe-activity-part1
+npx create-vite@latest w5-fe-activity-part1 --template react
+cd w5-fe-activity-part1
 npm install
 ```
 
+Clean up the default styles so they do not interfere with the lab:
+
+  - In `src/index.css`, remove the default CSS (you can leave it empty).
+  - In `src/App.css`, remove the default CSS (you can leave it empty).
+
 ### Create a UseEffectTest component
 
-In your __src__ folder, create a file called __UseEffectTest.jsx__. Create a
-functional component called `UseEffectTest` with an `h1` containing the text
-"UseEffectTest Component". Make `UseEffectTest` the default export.
+In your __src__ folder, create a file called __UseEffectTest.jsx__ and __UseEffectTest.css__ with following content
 
-```js
+```jsx
 // src/UseEffectTest.jsx
-
 const UseEffectTest = () => {
   return (
     <div>
@@ -47,12 +50,66 @@ const UseEffectTest = () => {
 export default UseEffectTest;
 ```
 
+```css
+/* src/UseEffectTest.css */ 
+div {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #f5f5f5;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    color: #333;
+    font-size: 28px;
+    margin-bottom: 20px;
+    text-align: center;
+    border-bottom: 3px solid #007bff;
+    padding-bottom: 10px;
+}
+
+h2 {
+    color: #555;
+    font-size: 22px;
+    margin: 20px 0;
+    text-align: center;
+}
+
+button {
+    display: block;
+    width: 100%;
+    max-width: 200px;
+    margin: 10px auto;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+```
+
 Add the `UseEffectTest` component to your __App.jsx__ by importing it and
 replacing `App`'s content with the following snippet:
 
 ```js
 // src/App.jsx
 import UseEffectTest from './UseEffectTest';
+import "./UseEffectTest.css"
 
 function App() {
   return (
@@ -256,8 +313,10 @@ Create a `count` slice of state with an initial value of `0`.
 const [count, setCount] = useState(0);
 ```
 
-Beneath the `setToggleTwo` button, create a button for "Count" and use the
-`onClick` event listener to increment the count.
+Beneath the `setToggleTwo` button, create a button for "Count" and use the `onClick` event listener to increment the count.
+```jsx
+<button onClick={() => setCount(count + 1)}>increment</button>
+```
 
 Create a third `useEffect` that listens for the `count` slice of state.
 
@@ -275,7 +334,14 @@ useEffect(() => {
 Open your browser console again. Click on the increment button and notice what
 happens. You will see that each time the count button is clicked, the
 `setInterval` function is called in the `useEffect` with a new value. However,
-the old `setInterval` function has not been cleared. This causes a memory leak.
+the old `setInterval` function has not been cleared. This causes a **memory leak**.
+
+**Why is this a memory leak?** Each time you increment the count:
+1. The dependency array detects the change
+2. A NEW `setInterval` starts running
+3. The OLD `setInterval` never stops—it's still running in memory
+4. After 5 clicks, you have 5 intervals all running simultaneously, wasting memory and CPU
+
 You should see all of the previous `setInterval`s running along with the new one
 that has been created.
 
@@ -293,11 +359,87 @@ return () => {
 };
 ```
 
+<details>
+<summary>To view the complete code for the useEffect</summary>
+
+```jsx
+useEffect(() => {
+        const myInterval = setInterval(() => {
+            console.log(`UseEffect3 with interval number ${count} is running`);
+        }, 1000);
+        return () => {
+            console.log(
+                `UseEffect3 cleanup ran.\nsetInterval number ${count} is being cleared out`
+            );
+            clearInterval(myInterval);
+        };
+    }, [count]);
+```
+
+</details>
+
 Test in your browser. Now you should see only one `setInterval` running at any
-given time.
+given time. The cleanup function ensures old intervals are stopped before new ones start.
+
+
+----
+
+<details>
+<summary>Here's the code for UseEffectTest.jsx </summary>
+
+```jsx
+import { useEffect, useState } from 'react';
+import "./UseEffectTest.css"
+
+const UseEffectTest = () => {
+    const [toggleOne, setToggleOne] = useState(false);
+    const [toggleTwo, setToggleTwo] = useState(false);
+    const [count, setCount] = useState(0);
+
+    useEffect(() => {
+        console.log('UseEffect1 Ran');
+    }, []);
+
+    useEffect(() => {
+        console.log('UseEffect2 Ran');
+        if (toggleTwo)
+            console.log('toggleTwo slice of state is true so this code runs');
+    }, [toggleTwo]);
+
+    useEffect(() => {
+        const myInterval = setInterval(() => {
+            console.log(`UseEffect3 with interval number ${count} is running`);
+        }, 1000);
+        return () => {
+            console.log(
+                `UseEffect3 cleanup ran.\nsetInterval number ${count} is being cleared out`
+            );
+            clearInterval(myInterval);
+        };
+    }, [count]);
+
+
+    return (
+        <div>
+            {console.log('rendered or re-rendered')}
+            <h1>UseEffectTest Component</h1>
+            <h2>Count: {count}</h2>
+            <button onClick={() => setToggleOne(!toggleOne)}>ToggleOne</button>
+            <button onClick={() => setToggleTwo(!toggleTwo)}>toggleTwo</button>
+            <button onClick={() => setCount(count + 1)}>increment</button>
+        </div>
+    );
+};
+
+export default UseEffectTest;
+```
+
+</details>
+
 
 
 ---
+
 ## Part 2/3
 
 This part shows the **useEffect** hook in action. We’ll continue from the code provided in **Activity 1, Part 3**. Earlier, we discussed how the **DELETE** operation works. Now, we will look at how the **READ** operation works.
@@ -345,9 +487,24 @@ useEffect(() => {
    * If successful, we save the fetched blog into React state, which will trigger a re-render and display the blog content.
 
 ---
+
 ## Part 3/3 (Optional)
 
 > For a review and optional exercises on this topic, you can refer to the [following mini projects](./useeffect-extra.md).
+
+
+---
+
+## Key Takeaways
+
+
+| Pattern | Syntax | When it runs | Use case |
+|---------|--------|-------------|----------|
+| **No dependency array** | `useEffect(callback)` | After every render | Rarely used; can cause performance issues |
+| **Empty dependency array** | `useEffect(callback, [])` | Only after first render | Perfect for initialization, fetching initial data, setting up listeners |
+| **With dependencies** | `useEffect(callback, [state])` | When dependencies change | React to specific state/prop changes |
+
+**Cleanup function** (`return () => {}`) - Always runs BEFORE the next effect runs or when component unmounts. 
 
 
 ## Ref
@@ -363,3 +520,64 @@ https://github.com/appacademy/aa34-react-hooks-useEffect-when-does-it-run
 [local-storage]: https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage
 [side-effects]: https://react.dev/learn/keeping-components-pure#side-effects-unintended-consequences
 [window-object]: https://developer.mozilla.org/en-US/docs/Web/API/Window
+
+
+
+<!-- 
+### Common Mistakes
+
+#### Mistake 1: Forgetting the dependency array
+```js
+useEffect(() => {
+  console.log('Runs on EVERY render!');
+  // Missing dependency array = infinite loops possible
+});
+```
+
+**Solution**: Always include a dependency array
+
+```js
+useEffect(() => {
+  console.log('Runs once on mount');
+}, []); // Empty array = runs once
+```
+
+
+
+#### Mistake 2: Forgetting the cleanup function
+```js
+useEffect(() => {
+  setInterval(() => {
+    console.log('This keeps running forever!');
+  }, 1000);
+}, [count]); // Memory leak!
+```
+
+**Solution**: Always clean up side effects
+
+```js
+useEffect(() => {
+  const myInterval = setInterval(() => {
+    console.log('This will be cleaned up properly');
+  }, 1000);
+  return () => clearInterval(myInterval); // Cleanup!
+}, [count]);
+```
+
+
+#### Mistake 3: Adding unnecessary dependencies
+```js
+useEffect(() => {
+  console.log('Runs when obj changes');
+}, [obj]); // If obj is created fresh each render, this runs every time!
+```
+
+**Solution**: Only include variables that actually change
+
+```js
+useEffect(() => {
+  console.log('Runs only when count changes');
+}, [count]); // More efficient
+``` 
+-->
+
