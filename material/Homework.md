@@ -25,7 +25,12 @@ The video homework uses emojis to represent the significance of each video. Belo
 
 ### Thursday Morning: 
 
-- 
+- :blue_book: MERN FullStack Tutorial with Deployment ~2h
+  - [Video](https://www.youtube.com/watch?v=O3BUHwfHf84)
+  - [src](https://github.com/burakorkmez/mern-crash-course)
+
 ### Thursday Afternoon:
 
-- 
+- :star: [Learn Custom Hooks In 10 Minutes](https://www.youtube.com/watch?v=6ThXsUwLWvc) 
+- :star: [JavaScript Cookies vs Local Storage vs Session Storage](https://www.youtube.com/watch?v=GihQAC1I39Q) 
+- :star: [localStorage and Bearer Auth Tokens - React Tutorial 44](https://www.youtube.com/watch?v=haeyo55iU6s)  
