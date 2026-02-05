@@ -30,7 +30,7 @@ The video homework uses emojis to represent the significance of each video. Belo
 - :bell: [React JS update ARRAY of OBJECTS in state (12min)](https://youtu.be/Y62mbztjmus?si=abay40hXVEp1MnZj)
 - :bell: :sweat_smile: [Build this React To-Do List app in 20 minutes](https://youtu.be/9wiWzu_tRB0?si=12_1Q82lEssfqIdE)
 - :bell: :blush: [Git Branches](./git-branches.md)
-- :blue_book: MERN FullStack Tutorial with Deployment ~2h
+- :bell: MERN FullStack Tutorial with Deployment ~2h
   - [Video](https://www.youtube.com/watch?v=O3BUHwfHf84)
   - [src](https://github.com/burakorkmez/mern-crash-course)
 
