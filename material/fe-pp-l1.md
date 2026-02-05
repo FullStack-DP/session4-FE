@@ -5,9 +5,8 @@
 
 In this activity, you'll build a **Book Collection Manager** that demonstrates React's `useState` hook. The application will allow users to add and remove books from a collection. We'll build this in 4 iterations, starting with basic setup and progressively adding functionality and styling.
 
----
 
-### Step 0: Set Up Your Project
+### Iteration 0: Basic Setup
 
 1. Open your `VS Code` editor in the `week4` directory.
 2. Create a new React project and start the development server. For full steps on creating a React project with `Vite`, refer to [these instructions](./vite.md). In brief, run:
@@ -23,11 +22,12 @@ In this activity, you'll build a **Book Collection Manager** that demonstrates R
    - **Note**: By default, Vite runs on port `5173`.  
    - When using Vite with React, it's recommended to use the `.jsx` extension for files containing JSX syntax. If a file contains only standard JavaScript, the `.js` extension is fine.
 
-3. Replace the contents of `src/App.jsx` and `src/App.css` with the code from **Iteration 0** below.
+3. Clean up the default styles so they do not interfere with the lab:
 
----
+  - In `src/index.css`, remove the default CSS (you can leave it empty).
+  - In `src/App.css`, remove the default CSS (you can leave it empty).
 
-### Iteration 0: Basic Setup
+4. Replace the contents of `src/App.jsx` and `src/App.css` with the code from **Iteration 0** below.
 
 Create the foundation of your Book Collection Manager with basic HTML structure and minimal styling.
 
@@ -87,8 +87,6 @@ body {
 ```
 
 **What you should see**: A centered card with the title "Book Collection Manager" and a welcome message.
-
----
 
 ### Iteration 1: Add Input Fields and State Management
 
@@ -194,8 +192,6 @@ body {
 ```
 
 **What you should see**: Two input fields where users can type the book title and author name. The fields should highlight with a blue border when focused.
-
----
 
 ### Iteration 2: Add the "Add Book" Button
 
@@ -334,7 +330,6 @@ body {
 
 **What you should see**: A green "Add Book" button below the input fields. When clicked, it should add the book to the collection (though we haven't displayed the list yet) and clear the input fields.
 
----
 
 ### Iteration 3: Display the Book List and Add Delete Functionality
 
@@ -590,20 +585,6 @@ body {
 
 ---
 
-## Final Application Features
-
-Your completed Book Collection Manager includes:
-- ✅ **State Management**: Uses `useState` to manage books, title, and author inputs
-- ✅ **Dynamic List**: Displays books as they are added
-- ✅ **Input Handling**: Two separate handlers for title and author inputs
-- ✅ **Add Functionality**: Validates inputs and adds books while clearing the form
-- ✅ **Delete Functionality**: Removes books by their index
-- ✅ **Responsive Design**: Works on different screen sizes
-- ✅ **User Feedback**: Shows empty state, hover effects, and active button states
-- ✅ **Professional Styling**: Clean, modern CSS with good typography and colors
-
----
-
 ## Part 2: Add Book Ratings
 
 Now it's time to extend your Book Collection Manager! In this part, you'll modify the application to allow users to rate each book.
@@ -692,7 +673,7 @@ When complete, your app should:
 - Clear the rating input when a new book is added
 - Have orange/gold colored stars that stand out from the text
 
----
+----
 
 <details>
 <summary><strong>Solution</strong></summary>
@@ -1026,9 +1007,7 @@ body {
 
 In this activity, you'll build a **Contact List Manager** that demonstrates React's `useState` hook. The application will allow users to add and remove contacts from a list. We'll build this in 4 iterations, starting with basic setup and progressively adding functionality and styling.
 
----
-
-### Step 0: Set Up Your Project
+### Iteration 0: Basic Setup
 
 1. Open your `VS Code` editor in the `week4` directory.
 2. Create a new React project and start the development server. For full steps on creating a React project with `Vite`, refer to [these instructions](./vite.md). In brief, run:
@@ -1044,11 +1023,13 @@ In this activity, you'll build a **Contact List Manager** that demonstrates Reac
    - **Note**: By default, Vite runs on port `5173`.  
    - When using Vite with React, it's recommended to use the `.jsx` extension for files containing JSX syntax. If a file contains only standard JavaScript, the `.js` extension is fine.
 
-3. Replace the contents of `src/App.jsx` and `src/App.css` with the code from **Iteration 0** below.
+3. Clean up the default styles so they do not interfere with the lab:
 
----
+  - In `src/index.css`, remove the default CSS (you can leave it empty).
+  - In `src/App.css`, remove the default CSS (you can leave it empty).
 
-### Iteration 0: Basic Setup
+4. Replace the contents of `src/App.jsx` and `src/App.css` with the code from **Iteration 0** below.
+
 
 Create the foundation of your Contact List Manager with basic HTML structure and minimal styling.
 
@@ -1108,8 +1089,6 @@ body {
 ```
 
 **What you should see**: A centered card with the title "Contact List Manager" and a welcome message.
-
----
 
 ### Iteration 1: Add Input Fields and State Management
 
@@ -1215,8 +1194,6 @@ body {
 ```
 
 **What you should see**: Two input fields where users can type the contact name and email address. The fields should highlight with a blue border when focused.
-
----
 
 ### Iteration 2: Add the "Add Contact" Button
 
@@ -1354,8 +1331,6 @@ body {
 ```
 
 **What you should see**: A green "Add Contact" button below the input fields. When clicked, it should add the contact to the list (though we haven't displayed the list yet) and clear the input fields.
-
----
 
 ### Iteration 3: Display the Contact List and Add Delete Functionality
 
@@ -1611,20 +1586,6 @@ body {
 
 ---
 
-## Final Application Features
-
-Your completed Contact List Manager includes:
-- ✅ **State Management**: Uses `useState` to manage contacts, name, and email inputs
-- ✅ **Dynamic List**: Displays contacts as they are added
-- ✅ **Input Handling**: Two separate handlers for name and email inputs
-- ✅ **Add Functionality**: Validates inputs and adds contacts while clearing the form
-- ✅ **Delete Functionality**: Removes contacts by their index
-- ✅ **Responsive Design**: Works on different screen sizes
-- ✅ **User Feedback**: Shows empty state, hover effects, and active button states
-- ✅ **Professional Styling**: Clean, modern CSS with good typography and colors
-
----
-
 ## Part 4: Add Contact Phone Number
 
 Now it's time to extend your Contact List Manager! In this part, you'll modify the application to allow users to save phone numbers for each contact.
@@ -1870,23 +1831,18 @@ Add these new CSS classes to your existing `src/App.css`:
 </details>
 
 
------
-
-
 ---
 
 ## Part 5: Recipe Manager
 
 In this activity, you'll build a **Recipe Manager** that demonstrates React's useState hook. The application will allow users to add and remove recipes from a collection. We'll build this in 4 iterations, starting with basic setup and progressively adding functionality and styling.
 
----
-
-### Step 0: Set Up Your Project
+### Iteration 0: Basic Setup
 
 1. Open your VS Code editor in the week4 directory.
 2. Create a new React project and start the development server. For full steps on creating a React project with Vite, refer to [these instructions](./vite.md). In brief, run:
 
-   ```ash
+   ```bash
    npx create-vite@latest week4-pp-part5 --template react
    cd week4-pp-part5
    npm install
@@ -1897,15 +1853,16 @@ In this activity, you'll build a **Recipe Manager** that demonstrates React's us
    - **Note**: By default, Vite runs on port 5173.  
    - When using Vite with React, it's recommended to use the .jsx extension for files containing JSX syntax. If a file contains only standard JavaScript, the .js extension is fine.
 
-3. Replace the contents of src/App.jsx and src/App.css with the code from **Iteration 0** below.
+3. Clean up the default styles so they do not interfere with the lab:
 
----
+  - In `src/index.css`, remove the default CSS (you can leave it empty).
+  - In `src/App.css`, remove the default CSS (you can leave it empty).
 
-### Iteration 0: Basic Setup
+4. Replace the contents of `src/App.jsx` and `src/App.css` with the code from **Iteration 0** below.
 
 Create the foundation of your Recipe Manager with basic HTML structure and minimal styling.
 
-#### \src/App.jsx\
+#### `src/App.jsx`
 
 ```jsx
 import React, { useState } from "react";
@@ -1925,7 +1882,7 @@ function RecipeManager() {
 export default RecipeManager;
 ```
 
-#### \src/App.css\
+#### `src/App.css`
 
 ```css
 * {
@@ -1962,13 +1919,11 @@ body {
 
 **What you should see**: A centered card with the title "Recipe Manager" and a welcome message.
 
----
-
 ### Iteration 1: Add Input Fields and State Management
 
 Now add state variables for recipe name and ingredients, along with input fields for users to enter recipe information.
 
-#### \src/App.jsx\
+#### `src/App.jsx`
 
 ```jsx
 import React, { useState } from "react";
@@ -2016,7 +1971,7 @@ function RecipeManager() {
 export default RecipeManager;
 ```
 
-#### \src/App.css\
+#### `src/App.css`
 
 ```css
 * {
@@ -2072,13 +2027,12 @@ body {
 
 This represents a good stopping point for part 1 of the recipe manager. Please continue this pattern with Iteration 2 and 3, along with Part 6 for the cooking time feature when ready.
 
----
 
 ### Iteration 2: Add the "Add Recipe" Button
 
-Implement the \ddRecipe\ function and button to add recipes to the collection.
+Implement the `addRecipe` function and button to add recipes to the collection.
 
-#### \src/App.jsx\
+#### `src/App.jsx`
 
 ```jsx
 import React, { useState } from "react";
@@ -2161,8 +2115,6 @@ This completes Iteration 2. The button styling is included in the CSS below:
   transform: scale(0.98);
 }
 ```
-
----
 
 ### Iteration 3: Display the Recipe List and Add Delete Functionality
 
@@ -2383,7 +2335,7 @@ Modify your `App.jsx` and `App.css` from Part 5 to:
 ### Hints
 
 - Use `<input type="number">` for the cooking time input
-- Add \handleCookingTimeChange()\ function
+- Add `handleCookingTimeChange()` function
 - Clear the cooking time when adding a recipe
 - Display time as "X minutes"
 
@@ -2687,21 +2639,37 @@ body {
 
 </details>
 
------
-
-
 ----
 
 ## Part 7
 
-Develop a Shopping Cart where users can add, update quantities, and remove items:
-- **State Management**: Use the `useState` hook to manage cart items and input fields (`item name`, `quantity`, `price`).
-- **Controlled Forms**: Use controlled components for inputs.
-- **List Rendering**: Display items dynamically with the `.map()` function.
-- **Functions**: Implement functions to add items, update quantities, and remove items.
+Build a **Shopping Cart** feature with the following functionality:
 
-**Example**
+#### **1. State Management**
+Use the `useState` hook to manage:
+- The list of cart items  
+- Controlled input fields:  
+  - `itemName`  
+  - `quantity`  
+  - `price`
 
-```jsx
-<RecipeShoppingCartManager />
-```
+#### **2. Controlled Form Inputs**
+All form fields must be controlled components:
+- Their values come from state  
+- Updating them triggers state updates
+
+#### **3. Add Items**
+Implement a function that:
+- Creates a new item object  
+- Adds it to the cart array  
+- Resets the input fields
+
+
+#### **4. Remove Items**
+Each item should have a **Remove** button that:
+- Deletes the item from the cart array
+
+#### **5. List Rendering**
+Use `.map()` to display all cart items dynamically:
+- Show name, quantity, price, and total per item  
+- Include update/remove controls
