@@ -13,6 +13,7 @@ We'll follow a 5-step learning cycle as shown in the figure below:
 
 ![](./material/img/learning-phases.png)
 
+
 -----
 
 ### Session Timeline 
