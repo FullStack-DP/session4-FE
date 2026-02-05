@@ -58,7 +58,8 @@ We'll follow a 5-step learning cycle as shown in the figure below:
   - [Activity](./material/fe-activity-1.md)
 - `useEffect` hook
   - [How to fetch data without useEffect](./material/react-extra-fetch.md)
-  - [Summary](./material/useeffect.md), [React events vs Effects](https://react.dev/learn/synchronizing-with-effects)
+  - [React events vs Effects](https://react.dev/learn/synchronizing-with-effects)
+  - [Summary](./material/useeffect.md)
   - [Activity](./material/fe-activity-2.md)
 
 
